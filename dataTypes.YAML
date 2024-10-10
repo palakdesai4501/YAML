@@ -1,0 +1,59 @@
+# String variables
+name: "Palak Desai"
+fruit: "mango"
+profession: 'software engineer'
+
+description: |
+  Hello, my name is Palak Desai.
+  I love exploring new technologies and building projects.
+
+# Multiline text in a single line using '>'
+quote: >
+  YAML is 
+  a human-readable 
+  data serialization standard.
+
+# Another way to represent single-line text
+quote: !!str YAML is a human-readable data serialization standard.
+
+# Numeric values
+idNumber: 9876
+score: 95.67
+booleanValue: !!bool yes # y, Y, true, True, TRUE
+# same for false -> no, n, N
+
+# Specifying data types explicitly
+zeroValue: !!int 0
+positiveInteger: !!int 120
+negativeInteger: !!int -20
+binaryValue: !!int 0b10101
+octalValue: !!int 0712
+hexadecimalValue: !!int 0x7F
+largeNumber: !!int +1_000_000 # 1,000,000
+scientificNotation: 4.67E+25
+
+---
+# Floating point numbers
+temperature: !!float 37.65
+positiveInfinity: !!float .inf
+notANumber: !!float .nan
+
+# Null values
+lastName: !!null null # or Null, NULL, ~
+emptyKey: ~
+
+# Dates and timestamps
+birthDate: !!timestamp 1995-08-17
+indiaStandardTime: 2023-11-20T10:15:30+05:30
+utcTime: 2023-11-20T05:15:30Z
+
+# List of items
+countries:
+  - India
+  - Canada
+  - Australia
+
+# Dictionary with key-value pairs
+contactDetails:
+  email: "palak.desai4501@gmail.com"
+  address: "Windsor, Canada"
