@@ -1,76 +1,146 @@
-# YAML Data Types and Advanced Structures
+<h1 align="center"> YAML </h1>
 
-This repository contains several YAML files demonstrating various data types and structures in YAML format. YAML (YAML Ain't Markup Language) is a data serialization language commonly used for configuration files, data exchange, and more due to its human-readable syntax.
+### YAML: 
+It was first called Yet Another MarkUp Langugae but now it is Yaml Ain't MarkUp Language.
+### Definition:
+Applications written with different technologies or languages which have different *Data Structures* can transfer data to each other using a *Common/ Standerd Format*. YAML, JSON and XML are these formats
 
-## File Descriptions
+It is a Data Serialization Language
+ - Data Serialization:
+Translation of Object (Code + Data) into stream of bytes that saves the state of this object in a form that is transmittable. Using Serialization, data can be converted into code and code can be converted into data again.
 
-### 1. `advancedDT.YAML`
+Benifits of YAML:
+- Simple and easy to read
+- Nice and Strict Syntax
+- Most Languages use it
+- More powerful when representing complex data
 
-This file showcases advanced YAML data types and structures, including:
+***Note: Any JSON input can be converted to YAML output and vice virse***
 
-- **Sequences:** Demonstrates both simple and nested lists.
-- **Sparse Sequences:** Contains lists with some empty or null values.
-- **Nested Sequences:** Lists within lists for representing hierarchical data.
-- **Mappings (Maps):** Key-value pairs, including nested mappings.
-- **Pairs:** Demonstrates the use of pairs where keys may have duplicate values.
-- **Sets:** Displays unique values using the `!!set` notation.
-- **Ordered Maps (omap):** Represents a list of key-value pairs where the order is preserved.
-- **Anchors and Aliases:** Reuses properties across the file using anchors (`&`) and references (`*`).
+### SYNTAX
+	
+#### Data Type
+##### Yaml Automatically Determines the data type if not specified
 
-### 2. `dataTypes.YAML`
+```
+name: Hammad
+age: 20
+graduate: no
+```
 
-This file focuses on different data types in YAML, including:
+#### But you can specify a dataType
+```
+Syntax --> variable: !!datatype value
+age: !!int 20
+```
 
-- **String Variables:** Examples of how to define simple strings and multiline strings.
-- **Numeric Values:** Demonstrates integers, floats, and exponential notation.
-- **Boolean Values:** Representation of boolean data types.
-- **Null Values:** Examples of how to represent null or empty values.
-- **Date and Time:** Handling timestamps and dates in YAML format.
-- **Type Specification:** Explicitly defining data types using the `!!` notation.
+#### Some Common are
+```
+zero: !!int 0
+positiveNum: !!int 45
+negativeNum: !!int -27
+commaValue: !!int 245_000 #245,000
+```
 
-### 3. `hello.yaml`
+#### Other Types
+```
+PI: !!float 3.14
+infinite: !!infinite .inf
+not a num: !!nan .nan
+booleanValue: !!boolean no
+nameString: !!str Hammad
+nullDataType: !!null null #null or NULL or ~
+```
 
-This file provides an introduction to basic YAML structures, including:
+#### Lists
+```
+- Item1
+- Item2
+- Item3
+```
 
-- **Basic Data Structures:** Examples of sequences (lists) and mappings (dictionaries).
-- **Block Type/Object:** Illustrates how to represent objects with nested key-value pairs.
-- **Multiline Text:** Examples of how to represent multiline strings in a single line.
-- **Set and Dictionary Usage:** Demonstrates the creation of sets and dictionaries with nested data.
-- **Reusing Properties:** Reuse of properties using anchors and aliases for data duplication.
+#### Nested Lists
+```
+-
+ - Item1
+ - Item2
+ - Item3
 
-## Benefits of YAML
+-
+ - Item1
+ - Item2
+ - Item3
+```
 
-- **Human-Readable:** YAML's syntax is designed to be easily readable and writable by humans.
-- **Data Serialization:** It efficiently converts data to and from formats that can be easily stored or transmitted.
-- **Language Agnostic:** YAML is supported by most programming languages.
-- **Structured Data Representation:** It can handle complex data structures, making it suitable for configurations and data interchange.
+#### Block Type / Object
+```
+ObjectTypeKeyValue:
+  KeyValue: Pair
+  KeyValue2: Pair2
+```
 
-## Usage Examples
+#### Or
 
-Below are some common YAML structures illustrated in the files:
+```
+ObjectTypeSimpleList: -Item1
+  -Item2
+  -Item3
+```
 
-### Basic Sequence Example:
-```yaml
-  - Item1
-  - Item2
-  - Item3
+#### You want to display multiple line in your browser but you want your browser to treat it as a single line #Use ">"
+```
+aboutInSingleLine: >-
+  I am a CS student
+  Currently Learning DevOps
+  and Android Dev
+```
 
-### Nested Map Example:
-Person:
-  name: Palak Desai
-  age: 25
-  skills:
-    - Python
-    - JavaScript
-    - DevOps
+#### Same as
+```
+about2: I am a CS student Currently Learning DevOps and Android Dev
+```
 
+#### Remember Indentation (one space) is very important here
+```
+aboutTwoMultipleLine: |-
+  I am a CS student
+  Currently Learning DevOps
+  and Android Dev
+```
 
-### Reusing Properties Using Anchors and Aliases:
-preferences: &prefs
-  favorite_fruit: Mango
-  favorite_food: Pizza
+#### Single Key but have two Values
+```
+pairExample: 
+  - job: Student
+  - job: Teacher
+```
 
-person1:
-  name: Vijay Patel
-  <<: *prefs
+#### Set
+```
+SetExample:
+?Hammad: Student
+?Danish: Graduate
+?Zubair: Freelancer
+```
 
+#### Dictionary
+```
+People:
+ -Hammad:
+  - Role: Student
+  - Age: 20
+ -Kunal:
+  -Role: Teacher
+  -Age: 78 
+```
+
+#### Reusing Properties
+```
+Likes: &likes
+ - Fruites: Mango
+ - Food: Biryani
+
+Person1:
+ -Name: Hammad
+ <<: *likes
+```
