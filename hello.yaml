@@ -1,0 +1,17 @@
+"banana": "I am a yellow fruit"
+2: "this is Rohan's roll number"
+---
+# lists
+- banana
+- orange
+- grape
+- Banana
+---
+states:
+  - gujarat
+  - maharashtra
+  - karnataka
+---
+countries: [India, Canada]
+---
+{ orange: "citrus fruit", age: 30 }
