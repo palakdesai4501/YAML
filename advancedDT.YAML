@@ -1,0 +1,89 @@
+# Sequence (list) representation
+subjects: !!seq
+ - Mathematics
+ - Science
+ - History
+
+# Inline sequence (list)
+cities: [Ahmedabad, Vadodara, Surat]
+
+# Sparse sequence with empty values
+sparse_sequence:
+ - hello
+ - world
+ - 
+ - null
+ - greetings
+
+# Nested sequence
+- 
+  - orange
+  - grape
+  - lemon
+-
+  - physics
+  - chemistry
+  - biology
+
+# Key-value pairs called maps
+!!map
+
+# Nested mappings: map within a map
+author: Palak Desai
+details:
+  experience: 5 years
+  specialization: software engineering
+  
+# Same as nested map representation
+author: Palak Desai
+details: { experience: 5 years, specialization: software engineering }
+
+# Pairs with duplicate values
+pair_example: !!pairs
+ - role: developer
+ - role: manager
+
+# Same representation with pairs
+pair_example: !!pairs [role: developer, role: manager]
+
+# Set: collection of unique values
+technologies: !!set
+ ? Java
+ ? Python
+ ? JavaScript
+
+# Ordered map (omap) for maintaining key order
+developers: !!omap
+  - Palak:
+     name: Palak Desai
+     experience: 3 years
+     skills: Full Stack Development
+  - Vijay:
+     name: Dhyani Desai
+     experience: 4 years
+     skills: Data Analysis
+
+# Anchors and aliases for reusing properties
+preferences: &prefs
+  favorite_language: Python
+  dislikes: PHP
+
+developer1:
+  name: Palak Desai
+  <<: *prefs
+
+developer2:
+  name: Dhyani Desai
+  <<: *prefs
+  dislikes: Ruby
+
+# Expanded representation with anchor and alias
+developer2:
+  name: Dhyani Desai
+  favorite_language: Python
+  dislikes: Ruby
+
+developer3:
+  name: Harsh Maradia
+  favorite_language: Python
+  dislikes: PHP
